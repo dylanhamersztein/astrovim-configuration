@@ -69,17 +69,19 @@ return {
   -- augroups/autocommands and custom filetypes also this just pure lua so
   -- anything that doesn't fit in the normal config locations above can go here
   polish = function()
-    -- Set up custom filetypes
-    -- vim.filetype.add {
-    --   extension = {
-    --     foo = "fooscript",
-    --   },
-    --   filename = {
-    --     ["Foofile"] = "fooscript",
-    --   },
-    --   pattern = {
-    --     ["~/%.config/foo/.*"] = "fooscript",
-    --   },
-    -- }
+    -- open neo-tree by default
+    -- https://github.com/AstroNvim/AstroNvim/issues/648#issuecomment-1686549041
+    vim.api.nvim_create_augroup("neotree_autoopen", { clear = true })
+    vim.api.nvim_create_autocmd("VimEnter", { -- changed from BufRead
+      desc = "Open neo-tree on enter",
+      group = "neotree_autoopen",
+      once = true,
+      callback = function()
+        if not vim.g.neotree_opened then
+          vim.cmd "Neotree show"
+          vim.g.neotree_opened = true
+        end
+      end,
+    })
   end,
 }
