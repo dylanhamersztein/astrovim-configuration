@@ -11,11 +11,15 @@ return {
       -- Set a formatter
       null_ls.builtins.formatting.stylua,
       null_ls.builtins.formatting.prettier,
+      null_ls.builtins.formatting.eslint,
       null_ls.builtins.formatting.shfmt,
 
       null_ls.builtins.diagnostics.eslint,
+      null_ls.builtins.diagnostics.shellcheck,
 
       null_ls.builtins.code_actions.shellcheck,
+      null_ls.builtins.code_actions.eslint,
+      null_ls.builtins.code_actions.ts_node_action,
     }
     return config -- return final config table
   end,
