@@ -18,7 +18,7 @@ return {
   },
 
   -- Set colorscheme to use
-  colorscheme = "everforest",
+  colorscheme = "kanagawa",
 
   -- Diagnostics configuration (for vim.diagnostics.config({...})) when diagnostics are on
   diagnostics = {
@@ -65,9 +65,7 @@ return {
     },
   },
 
-  -- This function is run last and is a good place to configuring
-  -- augroups/autocommands and custom filetypes also this just pure lua so
-  -- anything that doesn't fit in the normal config locations above can go here
+  -- This function is run last and is a good place to configure autogroups/autocommands
   polish = function()
     -- open neo-tree by default
     -- https://github.com/AstroNvim/AstroNvim/issues/648#issuecomment-1686549041
@@ -78,7 +76,9 @@ return {
       once = true,
       callback = function()
         if not vim.g.neotree_opened then
-          vim.cmd "Neotree show"
+          vim.cmd "Neotree"
+          vim.cmd "setlocal nonu"
+          vim.cmd "setlocal nornu"
           vim.g.neotree_opened = true
         end
       end,
