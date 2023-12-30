@@ -14,5 +14,6 @@ return {
       "typescript",
       "yaml",
     })
+    opts.auto_install = true
   end,
 }

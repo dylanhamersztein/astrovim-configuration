@@ -9,7 +9,6 @@ return {
       opts.ensure_installed = require("astronvim.utils").list_insert_unique(opts.ensure_installed, {
         "bashls",
         "cssls",
-        "eslint",
         "jsonls",
         "tsserver",
         "lua_ls",
@@ -24,9 +23,35 @@ return {
     opts = function(_, opts)
       -- add more things to the ensure_installed table protecting against community packs modifying it
       opts.ensure_installed = require("astronvim.utils").list_insert_unique(opts.ensure_installed, {
-        "prettier",
+        "prettierd",
+        "eslint_d",
         "stylua",
       })
+    end,
+  },
+  {
+    "jose-elias-alvarez/null-ls.nvim",
+    opts = function(_, config)
+      -- config variable is the default configuration table for the setup function call
+      local null_ls = require "null-ls"
+
+      -- Check supported formatters and linters
+      -- https://github.com/jose-elias-alvarez/null-ls.nvim/tree/main/lua/null-ls/builtins/formatting
+      -- https://github.com/jose-elias-alvarez/null-ls.nvim/tree/main/lua/null-ls/builtins/diagnostics
+      config.sources = {
+        -- Set a formatter
+        null_ls.builtins.formatting.stylua,
+        null_ls.builtins.formatting.prettier_d,
+        null_ls.builtins.formatting.eslint_d,
+        null_ls.builtins.formatting.shfmt,
+
+        null_ls.builtins.diagnostics.eslint,
+        null_ls.builtins.diagnostics.shellcheck,
+
+        null_ls.builtins.code_actions.shellcheck,
+        null_ls.builtins.code_actions.eslint_d,
+      }
+      return config -- return final config table
     end,
   },
   {
@@ -36,7 +61,6 @@ return {
       -- add more things to the ensure_installed table protecting against community packs modifying it
       opts.ensure_installed = require("astronvim.utils").list_insert_unique(opts.ensure_installed, {
         "js-debug-adapter",
-        "bash-debug-adapter",
       })
     end,
   },
