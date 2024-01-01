@@ -20,12 +20,18 @@ return {
   -- You can also easily customize additional setup of plugins that is outside of the plugin's setup call
   {
     "L3MON4D3/LuaSnip",
+    dependencies = {
+      "benfowler/telescope-luasnip.nvim",
+    },
     config = function(plugin, opts)
-      require "plugins.configs.luasnip"(plugin, opts) -- include the default astronvim config that calls the setup call
-      -- add more custom luasnip configuration such as filetype extend or custom snippets
+      require "plugins.configs.luasnip"(plugin, opts)
       local luasnip = require "luasnip"
+
       luasnip.filetype_extend("javascript", { "javascriptreact" })
       luasnip.filetype_extend("javascript", { "html" })
+
+      luasnip.filetype_extend("typescript", { "typescriptreact" })
+      luasnip.filetype_extend("typescript", { "html" })
     end,
   },
   -- By adding to the which-key config and using our helper function you can add more which-key registered bindings
