@@ -47,26 +47,5 @@ return {
   },
 
   -- This function is run last and is a good place to configure autogroups/autocommands
-  polish = function()
-    require("telescope").load_extension "luasnip"
-    -- open neo-tree by default
-    -- https://github.com/AstroNvim/AstroNvim/issues/648#issuecomment-1686549041
-    -- vim.api.nvim_create_augroup("neotree_autoopen", { clear = true })
-    -- vim.api.nvim_create_autocmd("BufRead", {
-    --   desc = "Open neo-tree on enter",
-    --   group = "neotree_autoopen",
-    --   once = true,
-    --   callback = function()
-    --     if not vim.g.neotree_opened then
-    --       vim.cmd "Neotree"
-    --       vim.cmd "setlocal nonu"
-    --       vim.cmd "setlocal nornu"
-    --       vim.g.neotree_opened = true
-    --
-    --       -- focus back on buffer
-    --       require "astronvim.utils.buffer"
-    --     end
-    --   end,
-    -- })
-  end,
+  polish = function() require("telescope").load_extension "luasnip" end,
 }
