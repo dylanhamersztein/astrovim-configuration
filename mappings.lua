@@ -43,5 +43,14 @@ return {
       function() vim.cmd "Telescope luasnip" end,
       desc = "Find snippets",
     },
+
+    ["<leader>r"] = {
+      mode = {
+        "v",
+        "x",
+        "n",
+      },
+      name = "Refactoring",
+    },
   },
 }
