@@ -27,14 +27,11 @@ return {
   },
   {
     "jose-elias-alvarez/null-ls.nvim",
-    opts = function(_, config)
+    opts = function(_, opts)
       local null_ls = require "null-ls"
 
-      -- supported formatters and linters
-      -- https://github.com/jose-elias-alvarez/null-ls.nvim/tree/main/lua/null-ls/builtins/formatting
-      -- https://github.com/jose-elias-alvarez/null-ls.nvim/tree/main/lua/null-ls/builtins/diagnostics
-      config.sources = {
-        -- Set a formatter
+      -- https://github.com/jose-elias-alvarez/null-ls.nvim/tree/main/lua/null-ls/builtins
+      opts.sources = {
         null_ls.builtins.formatting.stylua,
         null_ls.builtins.formatting.prettierd,
         null_ls.builtins.formatting.eslint_d,
@@ -44,13 +41,17 @@ return {
         null_ls.builtins.diagnostics.shellcheck,
 
         null_ls.builtins.code_actions.shellcheck,
-        null_ls.builtins.code_actions.eslint_d,
+        -- null_ls.builtins.code_actions.eslint_d,
 
         null_ls.builtins.completion.luasnip,
 
         null_ls.builtins.hover.printenv,
+
+        require "typescript.extensions.null-ls.code-actions",
+
+        require "user.lua.splitjoin_code_actions",
       }
-      return config
+      return opts
     end,
   },
   {
