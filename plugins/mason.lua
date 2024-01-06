@@ -29,7 +29,6 @@ return {
     "jose-elias-alvarez/null-ls.nvim",
     opts = function(_, opts)
       local null_ls = require "null-ls"
-
       -- https://github.com/jose-elias-alvarez/null-ls.nvim/tree/main/lua/null-ls/builtins
       opts.sources = {
         null_ls.builtins.formatting.stylua,
@@ -42,8 +41,6 @@ return {
 
         null_ls.builtins.code_actions.shellcheck,
         null_ls.builtins.code_actions.eslint_d,
-
-        null_ls.builtins.completion.luasnip,
 
         require "user.lua.splitjoin_code_actions",
       }
