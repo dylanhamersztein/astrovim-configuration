@@ -41,13 +41,9 @@ return {
         null_ls.builtins.diagnostics.shellcheck,
 
         null_ls.builtins.code_actions.shellcheck,
-        -- null_ls.builtins.code_actions.eslint_d,
+        null_ls.builtins.code_actions.eslint_d,
 
         null_ls.builtins.completion.luasnip,
-
-        null_ls.builtins.hover.printenv,
-
-        require "typescript.extensions.null-ls.code-actions",
 
         require "user.lua.splitjoin_code_actions",
       }

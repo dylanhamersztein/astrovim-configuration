@@ -22,7 +22,24 @@ return {
 
   lsp = {
     setup_handlers = {
-      tsserver = function(_, opts) require("typescript").setup { server = opts } end,
+      tsserver = function(_, _)
+        require("typescript-tools").setup {
+          on_attach = require("astronvim.utils.lsp").on_attach,
+          expose_as_code_action = "all",
+          complete_function_calls = true,
+          code_lens = "all",
+          settings = {
+            tsserver_file_preferences = {
+              includeInlayParameterNameHints = "all",
+              includeInlayFunctionParameterTypeHints = true,
+              includeInlayVariableTypeHints = true,
+              includeInlayPropertyDeclarationTypeHints = true,
+              includeInlayFunctionLikeReturnTypeHints = true,
+              includeInlayEnumMemberValueHints = true,
+            },
+          },
+        }
+      end,
     },
     formatting = {
       format_on_save = {
