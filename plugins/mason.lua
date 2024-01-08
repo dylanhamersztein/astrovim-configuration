@@ -43,6 +43,7 @@ return {
         null_ls.builtins.code_actions.eslint_d,
 
         require "user.lua.splitjoin_code_actions",
+        require "user.lua.typescript_completion_actions",
       }
       return opts
     end,
