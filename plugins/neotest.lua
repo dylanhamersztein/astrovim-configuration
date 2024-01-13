@@ -32,6 +32,11 @@ return {
     { "<leader>Tt", function() require("neotest").run.run() end, desc = "Run Test" },
     { "<leader>Tf", function() require("neotest").run.run(vim.fn.expand "%") end, desc = "Run File" },
     { "<leader>TF", function() require("neotest").run.run(vim.loop.cwd()) end, desc = "Run All Test Files" },
+    {
+      "<leader>Tw",
+      function() require("neotest").run.run { jestCommand = "jest --watch" } end,
+      desc = "Run test in watch mode.",
+    },
     { "<leader>Ts", function() require("neotest").summary.toggle() end, desc = "Toggle Summary" },
     {
       "<leader>To",
