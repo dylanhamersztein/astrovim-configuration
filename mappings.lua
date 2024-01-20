@@ -1,11 +1,6 @@
 -- Mapping data with "desc" stored directly by vim.keymap.set().
---
--- Please use this mappings table to set keyboard mapping since this is the
--- lower level configuration and more robust one. (which-key will
--- automatically pick-up stored data by this setting.)
 return {
   n = {
-
     -- navigate buffer tabs with `H` and `L`
     L = {
       function() require("astronvim.utils.buffer").nav(vim.v.count > 0 and vim.v.count or 1) end,
@@ -26,31 +21,26 @@ return {
       desc = "Close buffer",
     },
 
-    -- mappings seen under group name "Buffer"
-    ["<leader>bD"] = {
-      function()
-        require("astronvim.utils.status").heirline.buffer_picker(
-          function(bufnr) require("astronvim.utils.buffer").close(bufnr) end
-        )
-      end,
-      desc = "Pick to close",
-    },
-    -- tables with the `name` key will be registered with which-key if it's installed
-    -- this is useful for naming menus
+    -- naming menus
     ["<leader>b"] = { name = "Buffers" },
 
-    ["<leader>fs"] = {
-      function() vim.cmd "Telescope luasnip" end,
-      desc = "Find snippets",
-    },
-
     ["<leader>r"] = {
+      name = "Refactoring",
       mode = {
         "v",
         "x",
         "n",
       },
-      name = "Refactoring",
+    },
+
+    ["<leader>fs"] = {
+      desc = "Find snippets",
+      function() vim.cmd "Telescope luasnip" end,
+    },
+
+    ["<leader>fF"] = {
+      desc = "Find all files",
+      function() require("telescope.builtin").find_files { hidden = true } end,
     },
   },
 }
