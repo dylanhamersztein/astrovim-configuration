@@ -7,7 +7,7 @@ return {
         "bashls",
         "cssls",
         "jsonls",
-        "tsserver",
+        "ts_ls",
         "lua_ls",
         "yamlls",
       })
